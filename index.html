@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Var mısın?</title>
+<style>
+    body {
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+        overflow: hidden;
+    }
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+    p.message {
+        font-size: 1.2em;
+        color: #555;
+        min-height: 1.5em;
+        margin-bottom: 30px;
+    }
+    .button-container {
+        display: flex;
+        gap: 20px;
+        position: relative;
+    }
+    button {
+        padding: 15px 30px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        color: white;
+        transition: all 0.2s ease;
+    }
+    .yes {
+        background-color: green;
+    }
+    .no {
+        background-color: red;
+    }
+    button:hover {
+        opacity: 0.85;
+    }
+    .gif-container {
+        display: none;
+        margin-top: 20px;
+    }
+    .gif-container img {
+        max-width: 300px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+</style>
+</head>
+<body>
+    <h1>Var mısın?</h1>
+    <p class="message"></p>
+    <div class="button-container">
+        <button class="yes" onclick="sayYes()">Varım</button>
+        <button class="no" onclick="sayNo()">Yokum</button>
+    </div>
+    <div class="gif-container">
+        <p style="font-size:1.3em;">Biliyordum kabul edeceğini 😉</p>
+        <img src="https://media.giphy.com/media/3o7TKTDn976rzVgky4/giphy.gif" alt="Romantic GIF">
+    </div>
+
+<script>
+let noClicks = 0;
+const message = document.querySelector(".message");
+const noBtn = document.querySelector(".no");
+const gifContainer = document.querySelector(".gif-container");
+const buttonContainer = document.querySelector(".button-container");
+let moveInterval;
+
+function sayYes() {
+    buttonContainer.style.display = "none";
+    message.textContent = "";
+    gifContainer.style.display = "block";
+    clearInterval(moveInterval);
+}
+
+function sayNo() {
+    noClicks++;
+    if (noClicks === 1) {
+        message.textContent = "Ama ben seni istiyorum ❤️ Emin misin?";
+    } else if (noClicks === 2) {
+        message.textContent = "Hadi ama, bir şans ver 😏";
+    } else if (noClicks >= 3) {
+        message.textContent = "Yakalamaya çalışsan iyi olur 😜";
+        makeNoRunConstantly();
+    }
+}
+
+function makeNoRunConstantly() {
+    // Move button out of flexbox
+    noBtn.style.position = "absolute";
+    document.body.appendChild(noBtn);
+
+    const moveButton = () => {
+        const maxX = window.innerWidth - noBtn.offsetWidth;
+        const maxY = window.innerHeight - noBtn.offsetHeight;
+        noBtn.style.left = Math.random() * maxX + "px";
+        noBtn.style.top = Math.random() * maxY + "px";
+    };
+
+    // Start moving non-stop every 500ms
+    moveInterval = setInterval(moveButton, 100);
+
+    // Make it move instantly if touched/clicked
+    noBtn.addEventListener("mouseenter", moveButton);
+    noBtn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        moveButton();
+    }, { passive: false });
+}
+</script>
+</body>
+</html>
