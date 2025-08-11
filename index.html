@@ -72,7 +72,11 @@
         <img src="https://i.pinimg.com/736x/80/99/7c/80997c181e132acdfc1940d101754869.jpg" alt="Flirty Image" />
     </div>
     
-
+    <video id="hocaVideo" width="320" height="240" style="display:none; margin-top: 20px;" muted>
+        <source src="hoca.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
 <script>
 let noClicks = 0;
 const message = document.querySelector(".message");
@@ -91,8 +95,13 @@ function sayYes() {
 
 function sayNo() {
     noClicks++;
+    const video = document.getElementById('hocaVideo');
+
     if (noClicks === 1) {
         message.textContent = "Emin misin?";
+        // Show and autoplay video
+        video.style.display = "block";
+        video.play();
     } else if (noClicks === 2) {
         message.textContent = "Hadi hadi, naz yapma 😏";
     } else if (noClicks >= 3) {
