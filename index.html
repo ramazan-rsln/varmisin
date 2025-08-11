@@ -68,9 +68,10 @@
         <button class="no" onclick="sayNo()">Yokum</button>
     </div>
     <div class="gif-container">
-        <p style="font-size:1.3em;">Biliyordum kabul edeceğini 😉</p>
-        <img src="https://media.giphy.com/media/3o7TKTDn976rzVgky4/giphy.gif" alt="Romantic GIF">
+        <p style="font-size:1.3em;">Selam ya</p>
+        <img src="https://i.pinimg.com/736x/80/99/7c/80997c181e132acdfc1940d101754869.jpg" alt="Flirty Image" />
     </div>
+    
 
 <script>
 let noClicks = 0;
@@ -91,11 +92,11 @@ function sayYes() {
 function sayNo() {
     noClicks++;
     if (noClicks === 1) {
-        message.textContent = "Ama ben seni istiyorum ❤️ Emin misin?";
+        message.textContent = "Emin misin?";
     } else if (noClicks === 2) {
-        message.textContent = "Hadi ama, bir şans ver 😏";
+        message.textContent = "Hadi hadi, naz yapma 😏";
     } else if (noClicks >= 3) {
-        message.textContent = "Yakalamaya çalışsan iyi olur 😜";
+        message.textContent = "Tamam sen bilirsin, bu son";
         makeNoRunConstantly();
     }
 }
