@@ -92,9 +92,20 @@ let moveInterval;
 
 function sayYes() {
     buttonContainer.style.display = "none";
-    noBtn.style.display = "none"; // <- This hides the runaway button too
+    noBtn.style.display = "none"; // Hide runaway "Yokum" button if moved
     message.textContent = "";
     gifContainer.style.display = "block";
+
+    // Stop and hide both videos
+    const hocaVideo = document.getElementById('hocaVideo');
+    const elaVideo = document.getElementById('elaVideo');
+
+    [hocaVideo, elaVideo].forEach(video => {
+        video.pause();
+        video.currentTime = 0;
+        video.style.display = "none";
+    });
+
     clearInterval(moveInterval);
 }
 
