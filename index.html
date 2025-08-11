@@ -82,6 +82,7 @@ let moveInterval;
 
 function sayYes() {
     buttonContainer.style.display = "none";
+    noBtn.style.display = "none"; // <- This hides the runaway button too
     message.textContent = "";
     gifContainer.style.display = "block";
     clearInterval(moveInterval);
