@@ -2,7 +2,6 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Var mısın?</title>
 <style>
     body {
         background-color: #f4f4f4;
@@ -61,7 +60,7 @@
 </style>
 </head>
 <body>
-    <h1>Var mısın?</h1>
+    <h1 id="question">Var misin?</h1>
     <p class="message"></p>
     <div class="button-container">
         <button class="yes" onclick="sayYes()">Varım</button>
@@ -91,7 +90,7 @@ const buttonContainer = document.querySelector(".button-container");
 let moveInterval;
 
 function sayYes() {
-    const question = document.querySelector("title");
+    const question = document.querySelector("h1");
     if (noClicks === 0 || this === sayYes) { 
         question.style.display = "none";
     }
@@ -117,7 +116,7 @@ function sayNo() {
     noClicks++;
     const hocaVideo = document.getElementById('hocaVideo');
     const elaVideo = document.getElementById('elaVideo');
-    const question = document.querySelector("title");
+    const question = document.querySelector("h1");
 
     if (noClicks === 0 || this === sayYes) { 
         question.style.display = "none";
