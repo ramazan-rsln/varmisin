@@ -76,6 +76,11 @@
         <source src="hoca.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+
+    <video id="elaVideo" width="320" height="240" style="display:none; margin-top: 20px;" muted>
+        <source src="ela.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       
 <script>
 let noClicks = 0;
@@ -95,17 +100,28 @@ function sayYes() {
 
 function sayNo() {
     noClicks++;
-    const video = document.getElementById('hocaVideo');
+    const hocaVideo = document.getElementById('hocaVideo');
+    const elaVideo = document.getElementById('elaVideo');
 
     if (noClicks === 1) {
         message.textContent = "Emin misin?";
-        // Show and autoplay video
-        video.style.display = "block";
-        video.play();
+        hocaVideo.style.display = "block";
+        hocaVideo.play();
     } else if (noClicks === 2) {
-        message.textContent = "Hadi hadi, naz yapma 😏";
+        message.textContent = "Varım'a tıklamazsan...";
+        // Hide hoca video
+        hocaVideo.pause();
+        hocaVideo.currentTime = 0;
+        hocaVideo.style.display = "none";
+        // Show and play ela video
+        elaVideo.style.display = "block";
+        elaVideo.play();
     } else if (noClicks >= 3) {
         message.textContent = "Tamam sen bilirsin, bu son";
+        // Hide ela video
+        elaVideo.pause();
+        elaVideo.currentTime = 0;
+        elaVideo.style.display = "none";
         makeNoRunConstantly();
     }
 }
