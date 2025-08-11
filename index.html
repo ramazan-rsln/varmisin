@@ -91,7 +91,7 @@ const buttonContainer = document.querySelector(".button-container");
 let moveInterval;
 
 function sayYes() {
-    const question = document.querySelector("h1");
+    const question = document.querySelector("title");
     if (noClicks === 0 || this === sayYes) { 
         question.style.display = "none";
     }
@@ -117,7 +117,7 @@ function sayNo() {
     noClicks++;
     const hocaVideo = document.getElementById('hocaVideo');
     const elaVideo = document.getElementById('elaVideo');
-    const question = document.querySelector("h1");
+    const question = document.querySelector("title");
 
     if (noClicks === 0 || this === sayYes) { 
         question.style.display = "none";
